@@ -1,4 +1,4 @@
-# HW 1 Worksheet
+![image](https://github.com/awabgadir/ml-b_hw2/assets/108296090/d1acb807-b23f-43e4-9f18-7adf6f1fbdcb)# HW 1 Worksheet
 
 ---
 
@@ -58,13 +58,15 @@ Read through `README.md` and follow the steps to understand how the repo is stru
 
 ## 0.3 Where is the actual training code?
 
-`Ymain.py`
+`main.py`
 
 ## 0.4 Create a diagram explaining the structure of `main.py` and the entire code repo.
 
 Be sure to include the 4 main functions in it (`main`, `train_one_epoch`, `validate`, `evaluate`) and how they interact with each other. Also explain where the other files are used. No need to dive too deep into any part of the code for now, the following parts will do deeper dives into each part of the code. For now, read the code just enough to understand how the pieces come together, not necessarily the specifics. You can use any tool to create the diagram (e.g. just explain it in nice markdown, draw it on paper and take a picture, use draw.io, excalidraw, etc.)
 
-`YOUR ANSWER HERE`
+![Note Apr 6, 2024](https://github.com/awabgadir/ml-b_hw2/assets/108296090/4cb879da-30b6-46a4-baa0-b80d44ebe4d0)
+
+
 
 
 
