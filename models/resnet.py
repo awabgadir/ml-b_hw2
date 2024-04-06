@@ -39,35 +39,25 @@ class ResNetBlock(nn.Module):
 
         ## Initialize the block with a call to super and make your conv and batchnorm layers.
         super(ResNetBlock, self).__init__()
-        # TODO: Initialize conv and batch norm layers with the correct parameters
-
-        ## Use some conditional logic when defining your shortcut layer
-        ## For a no-op layer, consider creating an empty nn.Sequential()
-        self.shortcut = None  # ???
-        # TODO: Code here to initialize the shortcut layer
-
-        ## END YOUR CODE
+        self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size=3, stride=stride, padding=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(out_channels)
+        self.conv2 = nn.Conv2d(out_channels, out_channels, kernel_size=3, stride=1, padding=1, bias=False)
+        self.bn2 = nn.BatchNorm2d(out_channels)
+        if stride != 1 or in_channels != out_channels:
+            self.shortcut = nn.Sequential(
+                nn.Conv2d(in_channels, out_channels, kernel_size=1, stride=stride, bias=False),
+                nn.BatchNorm2d(out_channels)
+            )
+        else:
+            self.shortcut = nn.Sequential()  # No operation
 
     def forward(self, x):
-        """
-        Compute a forward pass of this batch of data on this residual block.
-
-        x: batch of images of shape (batch_size, num_channels, width, height)
-        returns: result of passing x through this block
-        """
-        ## YOUR CODE HERE
-        ## TODO: Call the first convolution, batchnorm, and activation
-
-        ## TODO: Call the second convolution and batchnorm
-
-        ## TODO: Also call the shortcut layer on the original input
-
-        ## TODO: Sum the result of the shortcut and the result of the second batchnorm
-        ## and apply your activation
-
-        # return out
-        ## END YOUR CODE
-        pass  # Remove this line when you implement this function
+        out = F.relu(self.bn1(self.conv1(x)))
+        out = self.bn2(self.conv2(out))
+        shortcut = self.shortcut(x)
+        out += shortcut
+        out = F.relu(out)
+        return out
 
 
 class ResNet18(nn.Module):
