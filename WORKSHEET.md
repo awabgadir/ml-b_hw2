@@ -76,53 +76,53 @@ The following questions relate to `data/build.py` and `data/datasets.py`.
 
 ### 1.0.0 What does `build_loader` do?
 
-`YOUR ANSWER HERE`
+`checks the specified dataset type in the configuration, and initializes respective datasets, then creates dataloader instances for training validation and testing`
 
 ### 1.0.1 What functions do you need to implement for a PyTorch Datset? (hint there are 3)
 
-`YOUR ANSWER HERE`
+`init len getitem`
 
 ## 1.1 CIFAR10Dataset
 
 ### 1.1.0 Go through the constructor. What field actually contains the data? Do we need to download it ahead of time?
 
-`YOUR ANSWER HERE`
+`constructor contained in self.dataset and we dont need to download it ahead of time beacuse download = true, so it downloads if not found at specified location`
 
 ### 1.1.1 What is `self.train`? What is `self.transform`?
 
-`YOUR ANSWER HERE`
+`self.train is how it knows whether dataset is for training or testing, self.transform is an the transformations we apply to an image via get_transforms`
 
 ### 1.1.2 What does `__getitem__` do? What is `index`?
 
-`YOUR ANSWER HERE`
+`allows us to index into our dataset via index`
 
 ### 1.1.3 What does `__len__` do?
 
-`YOUR ANSWER HERE`
+`returns length of dataset`
 
 ### 1.1.4 What does `self._get_transforms` do? Why is there an if statement?
 
-`YOUR ANSWER HERE`
+`runs image transformations based on the if condition, which applies more transformations if training`
 
 ### 1.1.5 What does `transforms.Normalize` do? What do the parameters mean? (hint: take a look here: https://pytorch.org/vision/main/generated/torchvision.transforms.Normalize.html)
 
-`YOUR ANSWER HERE`
+`normlaizes tensor image with mean and standard dev, parameters represent mean and standard dev w/ each channel of the input image`
 
 ## 1.2 MediumImagenetHDF5Dataset
 
 ### 1.2.0 Go through the constructor. What field actually contains the data? Where is the data actually stored on honeydew? What other files are stored in that folder on honeydew? How large are they?
 
-`YOUR ANSWER HERE`
+`self.file is the data, stored at /data/medium-imagenet/medium-imagenet-nmep-96.hdf5, dont know, dont know will ask someone `
 
 > *Some background*: HDF5 is a file format that stores data in a hierarchical structure. It is similar to a python dictionary. The files are binary and are generally really efficient to use. Additionally, `h5py.File()` does not actually read the entire file contents into memory. Instead, it only reads the data when you access it (as in `__getitem__`). You can learn more about [hdf5 here](https://portal.hdfgroup.org/display/HDF5/HDF5) and [h5py here](https://www.h5py.org/).
 
 ### 1.2.1 How is `_get_transforms` different from the one in CIFAR10Dataset?
 
-`YOUR ANSWER HERE`
+`no if condition`
 
 ### 1.2.2 How is `__getitem__` different from the one in CIFAR10Dataset? How many data splits do we have now? Is it different from CIFAR10? Do we have labels/annotations for the test set?
 
-`YOUR ANSWER HERE`
+`in this one, data is retried via index, it has 3 data splits, yes`
 
 ### 1.2.3 Visualizing the dataset
 
@@ -139,16 +139,15 @@ The following questions relate to `models/build.py` and `models/models.py`.
 
 ## What models are implemented for you?
 
-`YOUR ANSWER HERE`
+`leNet`
 
 ## What do PyTorch models inherit from? What functions do we need to implement for a PyTorch Model? (hint there are 2)
 
-`YOUR ANSWER HERE`
+`leNet`
 
 ## How many layers does our implementation of LeNet have? How many parameters does it have? (hint: to count the number of parameters, you might want to run the code)
 
-`YOUR ANSWER HERE`
-
+`5 layers, dunno ask later`
 
 
 # Part 3: Training
@@ -157,16 +156,21 @@ The following questions relate to `main.py`, and the configs in `configs/`.
 
 ## 3.0 What configs have we provided for you? What models and datasets do they train on?
 
-`YOUR ANSWER HERE`
+`provided configs for resnet and lenet, trained on cifar10 and mediumsized`
 
 ## 3.1 Open `main.py` and go through `main()`. In bullet points, explain what the function does.
 
-`YOUR ANSWER HERE`
+`parse_option() -> parses command-line arguments using argparse, allowing modification of configuration options. It returns the parsed arguments and the configuration based on the provided configuration file and additional command-line options`
+`main(config)-> handles the main training and evaluation process for the model. It sets up data loaders, initializes the model and optimizer, trains the model for multiple epochs, logs training and validation metrics, and evaluates the model on the test dataset, saving predictions to a numpy file`
+`train_one_epoch(config, model, criterion, data_loader, optimizer, epoch) -> trains the model for one epoch, computing loss and accuracy metrics for each batch, updating model parameters through backpropagation, and logging training progress including epoch, learning rate, loss, accuracy, and memory usage`
+`validate(config, data_loader, model) -> evaluates the model on the validation dataset, computing loss and accuracy metrics, logging validation progress including time, loss, accuracy, and memory usage, and returning the average accuracy and loss for the validation set`
+`evaluate(config, data_loader, model) -> evaluates the model on the test dataset, generating predictions, logging evaluation progress, and returning the predictions as a numpy array`
+
 
 ## 3.2 Go through `validate()` and `evaluate()`. What do they do? How are they different? 
 > Could we have done better by reusing code? Yes. Yes we could have but we didn't... sorry...
 
-`YOUR ANSWER HERE`
+`both evaluate performance, but on different datasets, eval is test, val is validation set`
 
 
 # Part 4: AlexNet
