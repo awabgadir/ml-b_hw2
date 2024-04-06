@@ -1,5 +1,3 @@
-![image](https://github.com/awabgadir/ml-b_hw2/assets/108296090/d1acb807-b23f-43e4-9f18-7adf6f1fbdcb)# HW 1 Worksheet
-
 ---
 
 This is the worksheet for Homework 1. Your deliverables for this homework are:
