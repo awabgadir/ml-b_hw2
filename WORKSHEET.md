@@ -28,15 +28,15 @@ Feel free to ask your NMEP friends if you don't know!
 
 ## -1.0 What is the difference between `torch.nn.Module` and `torch.nn.functional`?
 
-`YOUR ANSWER HERE`
+`Module is what we're basing our neural network off of, like a template, whereas functional provides us with many non-parameterized functions that we can use during training, ones that we learned about in class like reLu, softmax, etc.`
 
 ## -1.1 What is the difference between a Dataset and a DataLoader?
 
-`YOUR ANSWER HERE`
+`A dataset is a class used to represent our data, whereas data loader is how we get batches of our data from out dataset and also perform operations on our dataset!`
 
 ## -1.2 What does `@torch.no_grad()` above a function header do?
 
-`YOUR ANSWER HERE`
+`It doesn't let you compute gradients within a function.`
 
 
 
@@ -46,19 +46,19 @@ Read through `README.md` and follow the steps to understand how the repo is stru
 
 ## 0.0 What are the `build.py` files? Why do we have them?**
 
-`YOUR ANSWER HERE`
+`Its the actual code implementation of models and data loaders`
 
 ## 0.1 Where would you define a new model?
 
-`YOUR ANSWER HERE`
+`\models`
 
 ## 0.2 How would you add support for a new dataset? What files would you need to change?
 
-`YOUR ANSWER HERE`
+`datsets.py`
 
 ## 0.3 Where is the actual training code?
 
-`YOUR ANSWER HERE`
+`Ymain.py`
 
 ## 0.4 Create a diagram explaining the structure of `main.py` and the entire code repo.
 
