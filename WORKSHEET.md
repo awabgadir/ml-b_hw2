@@ -160,7 +160,7 @@ The following questions relate to `main.py`, and the configs in `configs/`.
 
 ## 3.1 Open `main.py` and go through `main()`. In bullet points, explain what the function does.
 
-`parse_option() -> parses command-line arguments using argparse, allowing modification of configuration options. It returns the parsed arguments and the configuration based on the provided configuration file and additional command-line options`
+`parse_option() -> parses command-line arguments using argparse, allowing modification of configuration options. It returns the parsed arguments and the configuration based on the provided configuration file and additional command-line options\n`
 `main(config)-> handles the main training and evaluation process for the model. It sets up data loaders, initializes the model and optimizer, trains the model for multiple epochs, logs training and validation metrics, and evaluates the model on the test dataset, saving predictions to a numpy file`
 `train_one_epoch(config, model, criterion, data_loader, optimizer, epoch) -> trains the model for one epoch, computing loss and accuracy metrics for each batch, updating model parameters through backpropagation, and logging training progress including epoch, learning rate, loss, accuracy, and memory usage`
 `validate(config, data_loader, model) -> evaluates the model on the validation dataset, computing loss and accuracy metrics, logging validation progress including time, loss, accuracy, and memory usage, and returning the average accuracy and loss for the validation set`
