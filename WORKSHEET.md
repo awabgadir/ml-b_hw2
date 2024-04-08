@@ -147,7 +147,7 @@ The following questions relate to `models/build.py` and `models/models.py`.
 
 ## How many layers does our implementation of LeNet have? How many parameters does it have? (hint: to count the number of parameters, you might want to run the code)
 
-`5 layers, dunno ask later`
+`7 layers, 99.28K`
 
 
 # Part 3: Training
