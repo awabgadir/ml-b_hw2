@@ -5,6 +5,7 @@ Reference:
 [1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
     Deep Residual Learning for Image Recognition. arXiv:1512.03385
 """
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -62,7 +63,7 @@ class ResNetBlock(nn.Module):
 
 class ResNet18(nn.Module):
     def __init__(self, num_classes=200):
-        Read the following, and uncomment it when you understand it, no need to add more code
+        # Read the following, and uncomment it when you understand it, no need to add more code
         num_classes = num_classes
         super(ResNet18, self).__init__()
         self.in_channels = 64
@@ -80,7 +81,7 @@ class ResNet18(nn.Module):
         self.linear = nn.Linear(512, num_classes)
 
     def make_block(self, out_channels, stride):
-        Read the following, and uncomment it when you understand it, no need to add more code
+        # Read the following, and uncomment it when you understand it, no need to add more code
         layers = []
         for stride in [stride, 1]:
             layers.append(ResNetBlock(self.in_channels, out_channels, stride))
@@ -88,7 +89,7 @@ class ResNet18(nn.Module):
         return nn.Sequential(*layers)
 
     def forward(self, x):
-        Read the following, and uncomment it when you understand it, no need to add more code
+        # Read the following, and uncomment it when you understand it, no need to add more code
         x = F.relu(self.bn1(self.conv1(x)))
         x = self.layer1(x)
         x = self.layer2(x)
